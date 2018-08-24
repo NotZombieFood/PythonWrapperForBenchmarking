@@ -13,7 +13,7 @@ def runCMD(command):
 	return result
 
 def benchmark(file, isUnix):
-	unix_command = 'ts=$(date +%s%N) ; ./hw01.exe ; tt=$((($(date +%s%N) - $ts)/1000000)) ; echo "Miliseconds:$tt"'
+	unix_command = 'ts=$(date +%s%N) ; ./$file ; tt=$((($(date +%s%N) - $ts)/1000000)) ; echo "Miliseconds:$tt"'.replace('$file', file)
 	windows_command = 'powershell Measure-Command {.\$file}'.replace('$file', file)
 	command = unix_command if isUnix else windows_command
 	results = []
